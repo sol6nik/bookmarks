@@ -1,0 +1,19 @@
+{% extends "base.hForm validation happens when the data is cleaned. If you want to customize this process, there are various places to make changes, each one serving a different purpose. Three types of cleaning methods are run during form processing. These are normally executed when you call the is_valid() method on a form. There are other things that can also trigger cleaning and validation (accessing the errors attribute or calling full_clean() directly), but normally they won’t be needed.
+
+In general, any cleaning method can raise ValidationError if there is a problem with the data it is processing, passing the relevant information to the ValidationError constructor. See below for the best practice in raising ValidationError. If no ValidationError is raised, the method should return the cleaned (normalized) data as a Python object.
+
+Most validation can be done using validators - helpers that can be reused. Validators are functions (or callables) that take a single argument and raise ValidationError on invalid input. Validators are run after the field’s to_python and validate methods have been called.
+
+tml" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+    <h1>Log-in</h1>
+    <p>Please, use the following form to log-in:</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Log in"></p>
+    </form>
+{% endblock %}
